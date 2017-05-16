@@ -63,7 +63,7 @@ public class ReadMetadata {
     }
 
     @VisibleForTesting
-    ReadMetadata( final Set<Integer> crossContigIgnoreSet, final SAMFileHeader header,
+    public ReadMetadata( final Set<Integer> crossContigIgnoreSet, final SAMFileHeader header,
                   final ReadGroupFragmentStatistics stats,
                   final int nPartitions, final long nReads, final long maxReadsInPartition, final int coverage ) {
         this.crossContigIgnoreSet = crossContigIgnoreSet;
