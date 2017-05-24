@@ -65,6 +65,9 @@ public abstract class CommandLineProgram implements CommandLinePluginProvider {
     @Argument(fullName = StandardArgumentDefinitions.VERBOSITY_NAME, shortName = StandardArgumentDefinitions.VERBOSITY_NAME, doc = "Control verbosity of logging.", common = true, optional = true)
     public Log.LogLevel VERBOSITY = Log.LogLevel.INFO;
 
+    @Argument(fullName = "log_to_file", shortName = "log", doc = "Set the logging location", common = true)
+    protected String logToFile = null;
+
     @Argument(doc = "Whether to suppress job-summary info on System.err.", common=true)
     public Boolean QUIET = false;
 
@@ -291,6 +294,10 @@ public abstract class CommandLineProgram implements CommandLinePluginProvider {
             Defaults.allDefaults().entrySet().stream().forEach(e->
                     logger.info("HTSJDK " + Defaults.class.getSimpleName() + "." + e.getKey() + " : " + e.getValue())
             );
+        }
+
+        if (logToFile != null) {
+            LoggingUtils.addAppender(logToFile);
         }
 
         final boolean usingIntelDeflater = (BlockCompressedOutputStream.getDefaultDeflaterFactory() instanceof IntelDeflaterFactory && ((IntelDeflaterFactory)BlockCompressedOutputStream.getDefaultDeflaterFactory()).usingIntelDeflater());
