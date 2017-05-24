@@ -65,7 +65,7 @@ public abstract class CommandLineProgram implements CommandLinePluginProvider {
     @Argument(fullName = StandardArgumentDefinitions.VERBOSITY_NAME, shortName = StandardArgumentDefinitions.VERBOSITY_NAME, doc = "Control verbosity of logging.", common = true, optional = true)
     public Log.LogLevel VERBOSITY = Log.LogLevel.INFO;
 
-    @Argument(fullName = "log_to_file", shortName = "log", doc = "Set the logging location", common = true)
+    @Argument(fullName = "log_to_file", shortName = "log", doc = "Set the logging location", common = true, optional = true)
     protected String logToFile = null;
 
     @Argument(doc = "Whether to suppress job-summary info on System.err.", common=true)
